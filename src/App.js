@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import FocusInput from './FocusInput';
 class App extends Component {
   state = {
     list: [],
@@ -19,6 +20,7 @@ class App extends Component {
             })
           }
         </ul>
+        <FocusInput />
       </Fragment>
     );
   }
