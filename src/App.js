@@ -1,13 +1,40 @@
-import React, { Component } from 'react';
-
+import React, { Component, Fragment } from 'react';
 class App extends Component {
+  state = {
+    list: [],
+    inputValue:''
+  }
+
   render() {
     return (
-      <div>
-        hello react
-      </div>
+      <Fragment>
+        <input type="text" onChange={this.inputHandler.bind(this)} value={this.state.inputValue}/>
+        <button onClick={() => this.addItem()}>添加</button>
+        <ul>
+          {
+            this.state.list.map((li, index) => {
+              return (
+                <li key={index} dangerouslySetInnerHTML={{ __html: li }}></li>
+              )
+            })
+          }
+        </ul>
+      </Fragment>
     );
   }
-}
 
+  inputHandler = (e) => {
+    this.setState({
+      inputValue: e.target.value
+    })
+  }
+
+  addItem = () => {
+    let list = [...this.state.list, this.state.inputValue];
+    this.setState({
+      list: list,
+      inputValue: ''
+    })
+  }
+}
 export default App;
