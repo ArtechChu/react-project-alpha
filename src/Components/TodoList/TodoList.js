@@ -9,37 +9,50 @@ class TodoList extends Component {
     render() {
         return (
             <Fragment>
-                <label htmlFor="inputItem">输入内容</label>
-                <input id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} />
-                <button onClick={() => this.addItemHandler()}>添加</button>
-                <ul>
-                    <TodoItems items={this.state.list} deleteItemHandler={this.deleteItemHandler} />
-                </ul>
+                <div>
+                    <label htmlFor="inputItem">输入内容</label>
+                    <input id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} />
+                    <button onClick={() => this.addItemHandler()}>添加</button>
+                </div>
+                <div>
+                    <ul>
+                        {
+                            this.getTodoItems()
+                        }
+                    </ul>
+                </div>
 
             </Fragment>
         );
     }
 
+    getTodoItems = () => {
+        return this.state.list.map((item, index) => {
+            return <TodoItems item={item} index={index} deleteItem={this.deleteItemHandler} key={item + "_" + index} />
+        })
+
+    }
+
     inputHandler = (e) => {
-        this.setState({
-            inputValue: e.target.value
+        let value = e.target.value;
+        this.setState(() => {
+            return {inputValue: value};
         })
     }
 
     addItemHandler = () => {
-        let list = [...this.state.list, this.state.inputValue];
-        this.setState({
-            list: list,
-            inputValue: ''
+        this.setState((prevState) => {
+            return {
+                list: [...prevState.list, prevState.inputValue],
+                inputValue: ''
+            }
         })
     }
 
     deleteItemHandler = (index) => {
         let list = this.state.list;
         list.splice(index, 1);
-        this.setState({
-            list: list
-        })
+        this.setState(()=>({list:list}));
     }
 
 }
