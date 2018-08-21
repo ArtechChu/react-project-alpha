@@ -44,7 +44,7 @@ class TodoList extends Component {
         this.setState((prevState) => {
             return {
                 list: [...prevState.list, prevState.inputValue],
-                inputValue: ''
+                inputValue: ""
             }
         })
     }

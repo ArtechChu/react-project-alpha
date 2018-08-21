@@ -11,8 +11,9 @@ class TodoItem extends Component {
                 {
                     <li
                         key={index}
-                        dangerouslySetInnerHTML={{ __html: item }}
+                        // dangerouslySetInnerHTML={{ __html: item }}
                         onClick={this.deleteItem}>
+                        {this.props.test} - {item}
                     </li>
                 }
             </Fragment>
@@ -31,4 +32,9 @@ TodoItem.propTypes = {
     deleteItem:PropTypes.func,
     index:PropTypes.number
 }
+
+TodoItem.defaultProps = {
+    test:"here is a default Value"
+}
+
 export default TodoItem;
