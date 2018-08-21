@@ -50,9 +50,11 @@ class TodoList extends Component {
     }
 
     deleteItemHandler = (index) => {
-        let list = this.state.list;
-        list.splice(index, 1);
-        this.setState(()=>({list:list}));
+        this.setState((prevState)=>{
+            let list = [...prevState.list];
+            list.splice(index, 1);
+           return { list:list};
+        });
     }
 
 }
