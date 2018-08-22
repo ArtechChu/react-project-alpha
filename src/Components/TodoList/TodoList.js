@@ -11,11 +11,12 @@ class TodoList extends Component {
             <Fragment>
                 <div>
                     <label htmlFor="inputItem">输入内容</label>
-                    <input id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} />
+                    {/* <input id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} /> */}
+                    <input ref={(input)=>this.input = input} id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} />
                     <button onClick={() => this.addItemHandler()}>添加</button>
                 </div>
                 <div>
-                    <ul>
+                    <ul ref={(ul)=>this.ul=ul}>
                         {
                             this.getTodoItems()
                         }
@@ -33,11 +34,18 @@ class TodoList extends Component {
 
     }
 
-    inputHandler = (e) => {
-        let value = e.target.value;
+    // inputHandler = (e) => {
+    //     let value = e.target.value;
+    //     this.setState(() => {
+    //         return {inputValue: value};
+    //     })
+    // }
+    inputHandler = () => {
+        let value = this.input.value;
         this.setState(() => {
             return {inputValue: value};
         })
+        
     }
 
     addItemHandler = () => {
@@ -46,6 +54,8 @@ class TodoList extends Component {
                 list: [...prevState.list, prevState.inputValue],
                 inputValue: ""
             }
+        },()=>{
+            console.log(this.ul.querySelectorAll('li').length);
         })
     }
 
