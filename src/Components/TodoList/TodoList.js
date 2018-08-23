@@ -6,11 +6,11 @@ class TodoList extends Component {
         list: [],
         inputValue: ''
     }
-    componentDidMount(){
-        axios.get('http://localhost:3000/api/Config/GetToken?salePlatformId=A7ADFD50-9B95-466C-A617-283C58055466')
-        .then((res)=>{ console.log(res)})
-        .catch((error)=>{ console.log(error)})
-    }
+    // componentDidMount(){
+    //     axios.get('http://localhost:3000/api/Config/GetToken?salePlatformId=A7ADFD50-9B95-466C-A617-283C58055466')
+    //     .then((res)=>{ console.log(res)})
+    //     .catch((error)=>{ console.log(error)})
+    // }
 
     render() {
         return (
