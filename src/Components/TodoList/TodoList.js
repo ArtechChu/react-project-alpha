@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import TodoItems from './TodoItem/TodoItem';
+import axios from 'axios';
 class TodoList extends Component {
     state = {
         list: [],
         inputValue: ''
+    }
+    componentDidMount(){
+        axios.get('http://localhost:3000/api/Config/GetToken?salePlatformId=A7ADFD50-9B95-466C-A617-283C58055466')
+        .then((res)=>{ console.log(res)})
+        .catch((error)=>{ console.log(error)})
     }
 
     render() {
@@ -12,7 +18,7 @@ class TodoList extends Component {
                 <div>
                     <label htmlFor="inputItem">输入内容</label>
                     {/* <input id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} /> */}
-                    <input ref={(input)=>this.input = input} id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} />
+                    <input id="inputItem" type="text" onChange={(e) => this.inputHandler(e)} value={this.state.inputValue} />
                     <button onClick={() => this.addItemHandler()}>添加</button>
                 </div>
                 <div>
@@ -34,17 +40,12 @@ class TodoList extends Component {
 
     }
 
-    // inputHandler = (e) => {
-    //     let value = e.target.value;
-    //     this.setState(() => {
-    //         return {inputValue: value};
-    //     })
-    // }
-    inputHandler = () => {
-        let value = this.input.value;
-        this.setState(() => {
-            return {inputValue: value};
-        })
+    inputHandler = (e) => {
+        let value =e.target.value;
+        // this.setState(() => {
+        //     return {inputValue: value};
+        // })
+        this.setState({inputValue: value})
         
     }
 
