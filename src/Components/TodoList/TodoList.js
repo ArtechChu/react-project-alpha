@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import store from '../../store/index';
-import {getItemDeleteAction, getInputChangeAction, getItemAddAction} from '../../store/actionCreators';
+import {getItemDeleteAction, getInputChangeAction, getItemAddAction, getItemInitAction} from '../../store/actionCreators';
 import TodoListUI from '../../UI/TodoList/TodoListUI';
+import axios from 'axios';
 // import actionCreators from '../../store/actionCreators';
 
 class TodoList extends Component {
@@ -20,6 +21,13 @@ class TodoList extends Component {
             list = {this.state.list}
             onDeleteItem = {this.onDeleteItem}
         />;
+    }
+    componentDidMount(){
+        axios.get('/list.json').then((res)=>{
+            let data = res.data;
+            let action = getItemInitAction(data)
+            store.dispatch(action);
+        }).catch((error)=>{console.log('访问失败')});
     }
 
     onDeleteItem =(index)=>{

@@ -32,3 +32,8 @@ export const getItemDeleteAction = index => {
 export const getItemAddAction = () => ({
     type: actionTypes.ADD_TODOITEM
 });
+
+export const getItemInitAction = (list) => ({
+    type: actionTypes.Init_TODOITEM,
+    data:list
+});

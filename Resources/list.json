@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "first_name": "Dare",
+        "last_name": "Bakhrushin",
+        "email": "dbakhrushin0@howstuffworks.com",
+        "gender": "Male",
+        "ip_address": "20.124.85.195"
+    },
+    {
+        "id": 2,
+        "first_name": "Philis",
+        "last_name": "Mulvany",
+        "email": "pmulvany1@sfgate.com",
+        "gender": "Female",
+        "ip_address": "13.238.150.63"
+    },
+    {
+        "id": 3,
+        "first_name": "Germain",
+        "last_name": "Rallings",
+        "email": "grallings2@g.co",
+        "gender": "Male",
+        "ip_address": "115.185.126.130"
+    },
+    {
+        "id": 4,
+        "first_name": "Bank",
+        "last_name": "Coady",
+        "email": "bcoady3@over-blog.com",
+        "gender": "Male",
+        "ip_address": "73.125.9.109"
+    },
+    {
+        "id": 5,
+        "first_name": "Nola",
+        "last_name": "McCrystal",
+        "email": "nmccrystal4@europa.eu",
+        "gender": "Female",
+        "ip_address": "234.135.82.231"
+    }
+]

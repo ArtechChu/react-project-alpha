@@ -22,6 +22,11 @@ export default (state = defaultState, action) => { //action表示用户传过来
         newState.list.splice(action.index,1);
         return newState;
     }
+    if(action.type===actionTypes.Init_TODOITEM){
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.list= action.data.map(ent=>ent.email);
+        return newState;
+    }
     
     return state;
 }
