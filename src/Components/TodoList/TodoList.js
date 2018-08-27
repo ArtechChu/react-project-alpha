@@ -16,7 +16,7 @@ class TodoList extends Component {
                 <Input 
                     placeholder="请输入item" 
                     style={{ width: "400px" }} 
-                    defaultValue={this.state.inputValue} 
+                    value={this.state.inputValue} 
                     onChange={(e)=>this.onInputChanging(e)}
                 />
                 <Button type="primary" onClick={()=>this.onAddButtonClicked()}>确定</Button>

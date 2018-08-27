@@ -15,14 +15,11 @@ export default (state = defaultState, action) => { //action表示用户传过来
         const newState = JSON.parse(JSON.stringify(state));
         newState.list.push(newState.inputValue);
         newState.inputValue = '';
-        console.log(newState);
         return newState;
     }
     if(action.type===actionTypes.DELETE_TODOITEM){
         const newState = JSON.parse(JSON.stringify(state));
-        
         newState.list.splice(action.index,1);
-        
         return newState;
     }
     
