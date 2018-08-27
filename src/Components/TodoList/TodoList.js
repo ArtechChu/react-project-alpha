@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Input, Button, List } from 'antd';
 import store from '../../store/index';
-import actionTypes from '../../store/actionTypes';
+import {getItemDeleteAction, getInputChangeAction, getItemAddAction} from '../../store/actionCreators';
+// import actionCreators from '../../store/actionCreators';
+
 class TodoList extends Component {
 
     constructor(props){
@@ -31,17 +33,13 @@ class TodoList extends Component {
     }
 
     onDeleteItem =(index)=>{
-        let action={
-            type:actionTypes.DELETE_TODOITEM,
-            index:index
-        }
+        // let action= actionCreators.getItemDeleteAction(index);
+        let action= getItemDeleteAction(index);
         store.dispatch(action);
     }
     onInputChanging=(e)=>{ //告诉ActionCreator要干什么事情
-        const action = {
-            type:actionTypes.CHANGE_INPUT_VALUE, //要干的事情
-            value:e.target.value //需要传递的值
-        }
+        // const action = actionCreators.getInputChangeAction(e.target.value);
+        const action = getInputChangeAction(e.target.value);
         store.dispatch(action);
     }
 
@@ -50,9 +48,8 @@ class TodoList extends Component {
     }
 
     onAddButtonClicked = ()=>{
-        let action = {
-            type:actionTypes.ADD_TODOITEM,
-        };
+        // let action = actionCreators.getItemAddAction();
+        let action = getItemAddAction();
         store.dispatch(action);
     }
 }
