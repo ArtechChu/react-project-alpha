@@ -23,13 +23,20 @@ class TodoList extends Component {
                 <List
                     bordered
                     dataSource={this.state.list}
-                    renderItem={item => (<List.Item>{item}</List.Item>)}
+                    renderItem={(item, index) => (<List.Item onClick={()=>this.onDeleteItem(index)}>{item}</List.Item>)}
                     style={{marginTop:"10px", width:"400px"}}
                 />
             </div>
         );
     }
 
+    onDeleteItem =(index)=>{
+        let action={
+            type:'delete_todoItem',
+            index:index
+        }
+        store.dispatch(action);
+    }
     onInputChanging=(e)=>{ //告诉ActionCreator要干什么事情
         const action = {
             type:"change_input_value", //要干的事情

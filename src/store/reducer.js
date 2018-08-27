@@ -17,6 +17,13 @@ export default (state = defaultState, action) => { //action表示用户传过来
         console.log(newState);
         return newState;
     }
+    if(action.type==='delete_todoItem'){
+        const newState = JSON.parse(JSON.stringify(state));
+        
+        newState.list.splice(action.index,1);
+        
+        return newState;
+    }
     
     return state;
 }
