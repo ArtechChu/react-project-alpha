@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import store from '../../store/index';
-import {getItemDeleteAction, getInputChangeAction, getItemAddAction, getTodoList} from '../../store/actionCreators';
+import {getItemDeleteAction, getInputChangeAction, getItemAddAction, getItemInit} from '../../store/actionCreators';
 import TodoListUI from '../../UI/TodoList/TodoListUI';
+
 // import actionCreators from '../../store/actionCreators';
 
 class TodoList extends Component {
@@ -22,8 +23,9 @@ class TodoList extends Component {
         />;
     }
     componentDidMount(){
-        const action = getTodoList();
+        let action  = getItemInit();
         store.dispatch(action);
+
     }
 
     onDeleteItem =(index)=>{

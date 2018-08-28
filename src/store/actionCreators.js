@@ -1,15 +1,10 @@
 import actionTypes from './actionTypes';
-import axios from 'axios';
 
-export const getTodoList = ()=>{
-    return (dispatch)=>{ //在action creators中，可以直接接收到 store的dispatch方法
-        axios.get('/list.json').then((res)=>{
-            let data = res.data;
-            let action = getItemInitAction(data)  //直接使用本方法
-            dispatch(action);
-        }).catch((error)=>{console.log(error)});
-    }
-}
+
+export const getItemInitAction = (list) => ({
+    type: actionTypes.Init_TODOITEM,
+    data:list
+});
 
 //需要注意，这里的箭头函数，外层需要用圆括号包起来
 export const getInputChangeAction = value => ({
@@ -29,8 +24,7 @@ export const getItemAddAction = () => ({
     type: actionTypes.ADD_TODOITEM
 });
 
-export const getItemInitAction = (list) => ({
-    type: actionTypes.Init_TODOITEM,
-    data:list
-});
+export const getItemInit = ()=>({
+    type:actionTypes.GET_INIT_ITEM
+})
 
