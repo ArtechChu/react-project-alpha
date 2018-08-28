@@ -1,30 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { getAddItemAction, getChangeInputValueAction, getDeleteItemAction } from './store/actionCreators';
-class TodoList extends Component {
-
-    render() {
-        const { inputValue, list, changeInputValue, addItem, deleteItem } = this.props;
-        return (
+const TodoList = (props) => {
+    const { inputValue, list, changeInputValue, addItem, deleteItem } = props;
+    return (
+        <div>
             <div>
-                <div>
-                    <input type="text"
-                        value={inputValue}
-                        onChange={(e) => changeInputValue(e)} //指的是 mapDispatchToProps 中的 changeInputValue 方法
-                    />
-                    <button onClick={() => addItem()}>提交</button>
-                </div>
-                <div>
-                    <ul>
-                        {list.map((item, index) => {
-                            return <li onClick={() => deleteItem(index)} key={index}>{item}</li>
-                        })}
-                    </ul>
-                </div>
+                <input type="text"
+                    value={inputValue}
+                    onChange={(e) => changeInputValue(e)} //指的是 mapDispatchToProps 中的 changeInputValue 方法
+                />
+                <button onClick={() => addItem()}>提交</button>
             </div>
-        );
-
-    }
+            <div>
+                <ul>
+                    {list.map((item, index) => {
+                        return <li onClick={() => deleteItem(index)} key={index}>{item}</li>
+                    })}
+                </ul>
+            </div>
+        </div >
+    );
 }
 
 const mapStateToProps = (state) => {
